@@ -238,8 +238,14 @@ public class ClienteRestController {
 			e.printStackTrace();
 		}
 		
-		if (!recurso.exists() && !recurso.isReadable())
-			throw new RuntimeException("No se pudo cargar la imagen: " + nombreFoto);
+		if (!recurso.exists() && !recurso.isReadable()) {
+			rutaArchivo = Paths.get("src/main/resources/static/images").resolve("no-user.png").toAbsolutePath();
+			try {
+				recurso = new UrlResource(rutaArchivo.toUri());
+			} catch (MalformedURLException e) {
+				e.printStackTrace();
+			}
+		}
 		
 		HttpHeaders cabecera = new HttpHeaders();
 		cabecera.add(HttpHeaders.CONTENT_DISPOSITION, "attachment; filename=\"" + recurso.getFilename() + "\"");
