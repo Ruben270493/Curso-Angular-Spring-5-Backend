@@ -9,8 +9,6 @@ import java.util.stream.Collectors;
 
 import javax.validation.Valid;
 
-import org.slf4j.Logger;
-import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.core.io.Resource;
 import org.springframework.dao.DataAccessException;
@@ -34,6 +32,7 @@ import org.springframework.web.bind.annotation.RestController;
 import org.springframework.web.multipart.MultipartFile;
 
 import com.rfernandez.springboot.backend.apirest.models.entity.Cliente;
+import com.rfernandez.springboot.backend.apirest.models.entity.Region;
 import com.rfernandez.springboot.backend.apirest.models.services.IClienteService;
 import com.rfernandez.springboot.backend.apirest.models.services.IUploadFileService;
 
@@ -136,6 +135,7 @@ public class ClienteRestController {
 			clienteActual.setApellido(cliente.getApellido());
 			clienteActual.setNombre(cliente.getNombre());
 			clienteActual.setEmail(cliente.getEmail());
+			clienteActual.setRegion(cliente.getRegion());
 			clienteUpdated = clienteService.save(clienteActual);
 		} catch(DataAccessException e) {
 			response.put("mensaje", "Error al actualizar el cliente en la base de datos");
@@ -226,6 +226,11 @@ public class ClienteRestController {
 		
 		return new ResponseEntity<Resource>(recurso, cabecera, HttpStatus.OK);
 		
+	}
+	
+	@GetMapping("/clientes/regiones")
+	public List<Region> listarRegiones() {
+		return clienteService.findAllRegiones();
 	}
 	
 }
