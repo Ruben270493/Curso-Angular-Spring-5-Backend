@@ -51,8 +51,7 @@ public class ClienteServiceImpl implements IClienteService {
 	@Override
 	@Transactional(readOnly = true)
 	public List<Region> findAllRegiones() {
-		clienteDao.findAllRegiones();
-		return null;
+		return clienteDao.findAllRegiones();
 	}
 
 }
