@@ -23,8 +23,8 @@ INSERT INTO clientes (nombre, apellido, email, create_at, region_id) VALUES ("Ca
 INSERT INTO clientes (nombre, apellido, email, create_at, region_id) VALUES ("Sergio","gonzalez", "sergio@spring.com", "2020-02-13", 8);
 
 /* Tablas Usuarios y Roles */
-INSERT INTO usuarios (username, password, enabled) VALUES ('ruben', '$2a$10$mQ8.mN/mY/eoupnHN5AUWOVM5pq98kzGCfqFIWHXpt/qO6KM3lpfi', 1);
-INSERT INTO usuarios (username, password, enabled) VALUES ('admin', '$2a$10$AaY8t04W0HewyGDkYszdVe1RrmpMM9z7TpULsbcUS3aHwQ7iJ1wbG', 1);
+INSERT INTO usuarios (username, password, enabled, nombre, apellido, email) VALUES ('ruben', '$2a$10$mQ8.mN/mY/eoupnHN5AUWOVM5pq98kzGCfqFIWHXpt/qO6KM3lpfi', 1, 'Rubén', 'Fernández de Castro', 'ruben@spring.com');
+INSERT INTO usuarios (username, password, enabled) VALUES ('admin', '$2a$10$AaY8t04W0HewyGDkYszdVe1RrmpMM9z7TpULsbcUS3aHwQ7iJ1wbG', 1, 'Fernando', 'Fernández', 'fernando@spring.com');
 
 INSERT INTO roles (nombre) VALUES ('ROLE_USER');
 INSERT INTO roles (nombre) VALUES ('ROLE_ADMIN');
